@@ -11,10 +11,10 @@ const dataSlice = createSlice({
     initialState,
     reducers:{
         addMember: (state,action)=>{
-
+            state.member.push(action.payload)
         },
         deleteMember: (state,action)=>{
-
+            state.member = state.member.filter((mem)=> mem!=action.payload)
         },
         addBill: (state,action)=>{
 

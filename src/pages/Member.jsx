@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { addMember, deleteMember } from '../redux/data'
 
 const Member = () => {
+
+  const { member } = useSelector((state)=> state.data)
+
+  const dispatch = useDispatch()
 
   const [name, setName] = useState("")
 
@@ -10,8 +16,12 @@ const Member = () => {
 
   const handleSubmit = (e)=>{
     e.preventDefault()
-    console.log("to add ",name)
+    dispatch(addMember(name))
     setName("")
+  }
+
+  const handleDeleteMember = (member)=>{
+    dispatch(deleteMember(member))
   }
 
   return (
@@ -22,6 +32,15 @@ const Member = () => {
 
         <button type="submit">Add</button>
       </form>
+
+      <p>All members</p>
+      <ul>
+        {
+          member.map((mem, idx)=>{
+            return <li key={idx}>{mem} <button onClick={()=> handleDeleteMember(mem)}>Delete</button></li>
+          })
+        }
+      </ul>
     </div>
   )
 }
