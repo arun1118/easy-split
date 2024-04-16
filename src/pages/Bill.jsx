@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { addBill, deleteBill } from '../redux/data'
+import { addBill, deleteBill, clearBills } from '../redux/data'
 
 const Bill = () => {
 
@@ -19,6 +19,12 @@ const Bill = () => {
         dispatch(addBill(billData))
         setBillData({"name": "", "quantity": 0, "price": 0})
     }
+
+    const handleClearBills = (e)=>{
+        e.preventDefault()
+        dispatch(clearBills())
+    }
+
     return (
         <div>
             <form method="POST" onSubmit={handleSubmit}>
@@ -32,6 +38,7 @@ const Bill = () => {
                 <input type="number" id="price" value={billData["price"]} onChange={handleChange} min={0}/>
 
                 <button type='submit'>Add</button>
+                <button onClick={handleClearBills}>Clear All</button>
             </form>
 
             <p>All bills</p>

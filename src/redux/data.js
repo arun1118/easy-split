@@ -22,6 +22,9 @@ const dataSlice = createSlice({
         deleteBill: (state,action)=>{
 
         },
+        clearBills: (state,action)=>{
+            state.bill = []
+        },
         calculateBill: (state)=>{
 
         }
@@ -30,7 +33,7 @@ const dataSlice = createSlice({
 
 export const {
     addMember, deleteMember,
-    addBill, deleteBill,
+    addBill, deleteBill,clearBills,
     calculateBill
 } = dataSlice.actions
 
