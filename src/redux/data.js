@@ -17,7 +17,7 @@ const dataSlice = createSlice({
             state.member = state.member.filter((mem)=> mem!=action.payload)
         },
         addBill: (state,action)=>{
-
+            state.bill.push(action.payload)
         },
         deleteBill: (state,action)=>{
 

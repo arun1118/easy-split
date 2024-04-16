@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { addBill, deleteBill } from '../redux/data'
 
 const Bill = () => {
+
+    const { bill } = useSelector((state)=> state.data)
+
+    const dispatch = useDispatch()
+
     const [billData, setBillData] = useState({"name": "", "quantity": 0, "price": 0})
 
     const handleChange = (e)=>{
@@ -9,7 +16,7 @@ const Bill = () => {
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        console.log("to add ",billData)
+        dispatch(addBill(billData))
         setBillData({"name": "", "quantity": 0, "price": 0})
     }
     return (
@@ -26,6 +33,23 @@ const Bill = () => {
 
                 <button type='submit'>Add</button>
             </form>
+
+            <p>All bills</p>
+            <ol>
+            {
+                bill.map((billElem, idx)=>{
+                    return(
+                    <div>
+                        <li key={idx}>{billElem["name"]}</li>
+                        <ul>
+                            <li>{billElem["quantity"]}</li>
+                            <li>{billElem["price"]}</li>
+                        </ul>
+                    </div>
+                    )
+                })
+            }
+            </ol>
         </div>
     )
 }
