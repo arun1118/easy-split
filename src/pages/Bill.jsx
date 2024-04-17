@@ -26,6 +26,10 @@ const Bill = () => {
         dispatch(clearBills())
     }
 
+    const handleDeleteBill = (billId)=>{
+        dispatch(deleteBill(billId))
+    }
+
     return (
         <div>
             <form method="POST" onSubmit={handleSubmit}>
@@ -53,6 +57,7 @@ const Bill = () => {
                             <li>{billElem["quantity"]}</li>
                             <li>{billElem["price"]}</li>
                         </ul>
+                        <button onClick={()=> handleDeleteBill(billElem["id"])}>Delete</button>
                     </div>
                     )
                 })

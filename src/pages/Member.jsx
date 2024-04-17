@@ -21,8 +21,8 @@ const Member = () => {
     setName("")
   }
 
-  const handleDeleteMember = (member)=>{
-    dispatch(deleteMember(member))
+  const handleDeleteMember = (memberId)=>{
+    dispatch(deleteMember(memberId))
   }
 
   return (
