@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     member: [],
     bill: [],
+    tax: [],
     result: {}
 }
 
@@ -25,6 +26,12 @@ const dataSlice = createSlice({
         clearBills: (state,action)=>{
             state.bill = []
         },
+        addTax: (state,action)=>{
+            state.tax.push(action.payload)
+        },
+        deleteTax: (state,action)=>{
+            state.tax = state.tax.filter((taxElem)=> taxElem["id"] != action.payload)
+        },
         calculateBill: (state)=>{
 
         }
@@ -34,6 +41,7 @@ const dataSlice = createSlice({
 export const {
     addMember, deleteMember,
     addBill, deleteBill,clearBills,
+    addTax, deleteTax,
     calculateBill
 } = dataSlice.actions
 

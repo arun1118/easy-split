@@ -1,22 +1,23 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { addBill, deleteBill, clearBills } from '../redux/data'
+import { addBill, deleteBill, clearBills, addTax, deleteTax } from '../redux/data'
 import { nanoid } from 'nanoid'
 
 const Bill = () => {
 
-    const { member, bill } = useSelector((state)=> state.data)
+    const { member, bill, tax } = useSelector((state)=> state.data)
 
     const dispatch = useDispatch()
 
     const [billData, setBillData] = useState({"name": "", "quantity": 0, "price": 0})
     const [selectedNames, setSelectedNames] = useState([])
+    const [taxAmount, setTaxAmount] = useState(0)
 
-    const handleChange = (e)=>{
+    const handleChangeBill = (e)=>{
         setBillData({...billData, [e.target.id]: e.target.value})
     }
 
-    const handleSubmit = (e)=>{
+    const handleSubmitBill = (e)=>{
         e.preventDefault()
         let selectedMembers = []
         member.forEach((memberElem)=>{
@@ -45,17 +46,31 @@ const Bill = () => {
         })
     }
 
+    const handleChangeTax = (e)=>{
+        setTaxAmount(e.target.value)
+    }
+
+    const handleSubmitTax = (e)=>{
+        e.preventDefault();
+        dispatch(addTax({"amount": taxAmount, "id": nanoid()}))
+        setTaxAmount(0)
+    }
+
+    const handleDeleteTax = (taxId)=>{
+        dispatch(deleteTax(taxId))
+    }
+
     return (
         <div>
-            <form method="POST" onSubmit={handleSubmit}>
+            <form method="POST" onSubmit={handleSubmitBill}>
                 <label htmlFor="name">Enter item name</label>
-                <input type="text" id="name" value={billData["name"]} onChange={handleChange} placeholder='item name'/>
+                <input type="text" id="name" value={billData["name"]} onChange={handleChangeBill} placeholder='item name'/>
 
                 <label htmlFor="quantity">Enter the Quantity</label>
-                <input type="number" id="quantity" value={billData["quantity"]} onChange={handleChange} min={0}/>
+                <input type="number" id="quantity" value={billData["quantity"]} onChange={handleChangeBill} min={0}/>
 
                 <label htmlFor="price">Enter the price</label>
-                <input type="number" id="price" value={billData["price"]} onChange={handleChange} min={0}/>
+                <input type="number" id="price" value={billData["price"]} onChange={handleChangeBill} min={0}/>
 
                 <ul>
                     {
@@ -100,6 +115,26 @@ const Bill = () => {
                 })
             }
             </ol>
+
+            <form method="post" onSubmit={handleSubmitTax}>
+                <label htmlFor="taxAmount">Enter the tax amount</label>
+                <input type="number" step="0.01" id="taxAmount" onChange={handleChangeTax} value={taxAmount} placeholder='tax amount'/>
+
+                <button type="submit">Add</button>
+            </form>
+
+            <ul>
+            {
+                tax.map((taxval)=>{
+                    return (
+                    <li key={taxval["id"]}>
+                        {taxval["amount"]}
+                        <button onClick={()=> handleDeleteTax(taxval["id"])}>Delete</button>
+                    </li>
+                    )
+                })
+            }
+            </ul>
         </div>
     )
 }
