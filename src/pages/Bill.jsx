@@ -94,8 +94,8 @@ const Bill = () => {
             {
                 bill.map((billElem, idx)=>{
                     return(
-                    <div>
-                        <li key={idx}>{billElem["name"]}</li>
+                    <div key={idx}>
+                        <li>{billElem["name"]}</li>
                         <ul>
                             <li>{billElem["quantity"]}</li>
                             <li>{billElem["price"]}</li>
@@ -122,8 +122,8 @@ const Bill = () => {
 
                 <button type="submit">Add</button>
             </form>
-
-            <ul>
+            <p>All Taxes</p>
+            <ol>
             {
                 tax.map((taxval)=>{
                     return (
@@ -134,7 +134,7 @@ const Bill = () => {
                     )
                 })
             }
-            </ul>
+            </ol>
         </div>
     )
 }
