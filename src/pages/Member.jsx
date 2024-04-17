@@ -11,17 +11,17 @@ const Member = () => {
 
   const [name, setName] = useState("")
   const [preDefinedNames, setPreDefinedNames] = useState([
-    {"name": "isha", "id": "1", "isChecked": false},
-    {"name": "arun", "id": "2", "isChecked": false},
-    {"name": "ashu", "id": "3", "isChecked": false},
-    {"name": "tej", "id": "4", "isChecked": false},
-    {"name": "chocho", "id": "5", "isChecked": false},
-    {"name": "aswin", "id": "6", "isChecked": false},
-    {"name": "sagar", "id": "7", "isChecked": false},
-    {"name": "parth", "id": "8", "isChecked": false},
-    {"name": "vedant", "id": "9", "isChecked": false},
-    {"name": "tosif", "id": "10", "isChecked": false},
-    {"name": "anushka", "id": "11", "isChecked": false},
+    {"name": "isha", "isChecked": false},
+    {"name": "arun", "isChecked": false},
+    {"name": "ashu", "isChecked": false},
+    {"name": "tej", "isChecked": false},
+    {"name": "chocho", "isChecked": false},
+    {"name": "aswin", "isChecked": false},
+    {"name": "sagar", "isChecked": false},
+    {"name": "parth", "isChecked": false},
+    {"name": "vedant", "isChecked": false},
+    {"name": "tosif", "isChecked": false},
+    {"name": "anushka", "isChecked": false},
   ])
 
   const handleChange = (e)=>{
@@ -53,17 +53,17 @@ const Member = () => {
     selectedNames.forEach((name)=>{ dispatch(addMember({"id": nanoid(10), "name":name})) })
 
     setPreDefinedNames([
-      {"name": "isha", "id": "1", "isChecked": false},
-      {"name": "arun", "id": "2", "isChecked": false},
-      {"name": "ashu", "id": "3", "isChecked": false},
-      {"name": "tej", "id": "4", "isChecked": false},
-      {"name": "chocho", "id": "5", "isChecked": false},
-      {"name": "aswin", "id": "6", "isChecked": false},
-      {"name": "sagar", "id": "7", "isChecked": false},
-      {"name": "parth", "id": "8", "isChecked": false},
-      {"name": "vedant", "id": "9", "isChecked": false},
-      {"name": "tosif", "id": "10", "isChecked": false},
-      {"name": "anushka", "id": "11", "isChecked": false},
+      {"name": "isha", "isChecked": false},
+      {"name": "arun", "isChecked": false},
+      {"name": "ashu", "isChecked": false},
+      {"name": "tej", "isChecked": false},
+      {"name": "chocho", "isChecked": false},
+      {"name": "aswin", "isChecked": false},
+      {"name": "sagar", "isChecked": false},
+      {"name": "parth", "isChecked": false},
+      {"name": "vedant", "isChecked": false},
+      {"name": "tosif", "isChecked": false},
+      {"name": "anushka", "isChecked": false},
     ])
   }
 
