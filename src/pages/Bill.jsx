@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addBill, deleteBill, clearBills } from '../redux/data'
+import { nanoid } from 'nanoid'
 
 const Bill = () => {
 
@@ -16,7 +17,7 @@ const Bill = () => {
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        dispatch(addBill(billData))
+        dispatch(addBill({...billData, "id": nanoid()}))
         setBillData({"name": "", "quantity": 0, "price": 0})
     }
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addMember, deleteMember } from '../redux/data'
+import { nanoid } from 'nanoid'
 
 const Member = () => {
 
@@ -16,7 +17,7 @@ const Member = () => {
 
   const handleSubmit = (e)=>{
     e.preventDefault()
-    dispatch(addMember(name))
+    dispatch(addMember({"id": nanoid(10), "name":name}))
     setName("")
   }
 
@@ -37,7 +38,7 @@ const Member = () => {
       <ul>
         {
           member.map((mem, idx)=>{
-            return <li key={idx}>{mem} <button onClick={()=> handleDeleteMember(mem)}>Delete</button></li>
+            return <li key={idx}>{mem["name"]} <button onClick={()=> handleDeleteMember(mem["id"])}>Delete</button></li>
           })
         }
       </ul>

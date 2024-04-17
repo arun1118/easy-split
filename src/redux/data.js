@@ -14,13 +14,13 @@ const dataSlice = createSlice({
             state.member.push(action.payload)
         },
         deleteMember: (state,action)=>{
-            state.member = state.member.filter((mem)=> mem!=action.payload)
+            state.member = state.member.filter((mem)=> mem["id"] != action.payload)
         },
         addBill: (state,action)=>{
             state.bill.push(action.payload)
         },
         deleteBill: (state,action)=>{
-
+            state.bill = state.bill.filter((billElem)=> billElem["id"] != action.payload)
         },
         clearBills: (state,action)=>{
             state.bill = []
