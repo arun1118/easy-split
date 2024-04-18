@@ -61,17 +61,17 @@ const Bill = () => {
     }
 
     return (
-        <div>
+        <div  style={{ overflow: 'auto'}}>
             <form method="POST" onSubmit={handleSubmitBill}>
                 <label htmlFor="name">Enter item name</label>
                 <input type="text" id="name" value={billData["name"]} onChange={handleChangeBill} placeholder='item name'/>
-
+                <br /><br />
                 <label htmlFor="quantity">Enter the Quantity</label>
                 <input type="number" id="quantity" value={billData["quantity"]} onChange={handleChangeBill} min={0}/>
-
+                <br /><br />
                 <label htmlFor="price">Enter the price</label>
                 <input type="number" id="price" value={billData["price"]} onChange={handleChangeBill} min={0}/>
-
+                <br /><br />
                 <ul>
                     {
                     member.map((name,idx)=>{
