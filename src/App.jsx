@@ -11,9 +11,9 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<Member />}/>
-          <Route path="/bill" element={<Bill />}/>
-          <Route path="/result" element={<Result />}/>
+          <Route path="/easy-split" element={<Member />}/>
+          <Route path="/easy-split/bill" element={<Bill />}/>
+          <Route path="/easy-split/result" element={<Result />}/>
         </Routes>
       </BrowserRouter>
     </div>

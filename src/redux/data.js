@@ -4,7 +4,6 @@ const initialState = {
     member: [],
     bill: [],
     tax: [],
-    result: {}
 }
 
 const dataSlice = createSlice({
@@ -31,9 +30,6 @@ const dataSlice = createSlice({
         },
         deleteTax: (state,action)=>{
             state.tax = state.tax.filter((taxElem)=> taxElem["id"] != action.payload)
-        },
-        calculateBill: (state)=>{
-
         }
     }
 })

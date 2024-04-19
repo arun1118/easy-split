@@ -61,7 +61,7 @@ const Bill = () => {
     }
 
     return (
-        <div  style={{ overflow: 'auto'}}>
+        <div style={{ overflow: 'auto'}}>
             <form method="POST" onSubmit={handleSubmitBill}>
                 <label htmlFor="name">Enter item name</label>
                 <input type="text" id="name" value={billData["name"]} onChange={handleChangeBill} placeholder='item name'/>
